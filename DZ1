@@ -1,0 +1,15 @@
+import subprocess
+
+
+def is_command_output_contains_text(command, text):
+        try:
+            output = subprocess.check_output(command, shell=True, universal_newlines=True)
+            return text in output
+        except subprocess.CalledProcessError:
+            return False
+
+
+command = "ls -l"
+text = "file.txt"
+result = is_command_output_contains_text(command, text)
+print(result)
